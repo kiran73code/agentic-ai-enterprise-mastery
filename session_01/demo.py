@@ -9,7 +9,13 @@ load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-llm = ChatGoogleGenerativeAI(model="gemini-3.8-flash", temperature=0, api_key=GEMINI_API_KEY, LANGSMITH_TRACING=True, LANGSMITH_API_KEY=os.getenv("LANGSMITH_API_KEY"))
+llm = ChatGoogleGenerativeAI(
+    model="gemini-3.8-flash",
+    temperature=0,
+    api_key=GEMINI_API_KEY,
+    LANGSMITH_TRACING=True,
+    LANGSMITH_API_KEY=os.getenv("LANGSMITH_API_KEY"),
+)
 
 result = llm.invoke("What is the capital of France?")
 print(result.content)

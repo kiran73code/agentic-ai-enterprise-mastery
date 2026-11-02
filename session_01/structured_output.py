@@ -1,4 +1,3 @@
-
 import os
 from typing import TypedDict
 
@@ -15,21 +14,25 @@ class AnswerWithJustifcation(BaseModel):
     justification: str = Field(description="Why this answer is correct")
 
 
-llm = ChatGoogleGenerativeAI(model="gemini-3.8-flash", 
-            temperature=0, api_key=GEMINI_API_KEY).with_structured_output(AnswerWithJustifcation)
+llm = ChatGoogleGenerativeAI(
+    model="gemini-3.8-flash", temperature=0, api_key=GEMINI_API_KEY
+).with_structured_output(AnswerWithJustifcation)
 
 result = llm.invoke("What is 2* 3 ?")
 print(result)
 print(result.model_dump_json())
 
 
-class AnswerWithJustifcation(TypedDict): # generally used to create/define a schema for the output or input
+class AnswerWithJustifcation(
+    TypedDict
+):  # generally used to create/define a schema for the output or input
     answer: str
     justification: str
-    
 
-llm = ChatGoogleGenerativeAI(model="gemini-3.8-flash", 
-            temperature=0, api_key=GEMINI_API_KEY).with_structured_output(AnswerWithJustifcation)
+
+llm = ChatGoogleGenerativeAI(
+    model="gemini-3.8-flash", temperature=0, api_key=GEMINI_API_KEY
+).with_structured_output(AnswerWithJustifcation)
 
 result = llm.invoke("What is 2* 3 ?")
 print(result)
